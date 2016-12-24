@@ -1,3 +1,6 @@
+<?php 
+  $pageType = $_REQUEST['pageType'];
+?>
 <!DOCTYPE html>
 <!-- saved from url=(0050)http://getbootstrap.com/examples/starter-template/ -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,25 +19,27 @@
 
   <body>
     <div class="container">
-      <pre>
-        Hey Jude, don't make it bad 
-        take a sad song and make it 
-        better 
-      </pre>
+      <h2>จำนวนเส้นบังตา <?php echo $pageType*25; ?></h2>
+      <div>
+        <img style="float: left; padding-right: 5px" id="captcha_image" src="lib/securimage/securimage_show_basic.php?<?php echo md5(uniqid(time())) ?>&pageType=<?php echo $pageType ?>" alt="CAPTCHA Image">
+        <br/>
+        <div style="clear: both"></div>
+      </div>
       <div class="panel panel-default">
         <div class="panel-body" id="typingResult" style="word-wrap: break-word"></div>
       </div>
     </div><!-- /.container -->
 
     <div class="container">
-		<form id="typingForm" method="post" action="submit-json.php" target="_self">
-      <input type="text" name="userId" />
-			<input type="hidden" name="inputKeydownJsonData" id="hiddenKeydownJsonData"/>
-			<input type="hidden" name="inputKeyupJsonData" id="hiddenKeyupJsonData"/>
-			<input type="hidden" name="deleteJsonData" id="hiddenDeleteJsonData"/>
-			<button type="button" class="btn btn-primary" id="submitJson">เสร็จสิ้น</button>
-		</form>
-	</div><!-- /.container -->
+      <form id="typingForm" method="post" action="submit-json.php" target="_self">
+        <input type="hidden" name="inputKeydownJsonData" id="hiddenKeydownJsonData"/>
+        <input type="hidden" name="inputKeyupJsonData" id="hiddenKeyupJsonData"/>
+        <input type="hidden" name="deleteJsonData" id="hiddenDeleteJsonData"/>
+        <input type="hidden" name="pageType" value="<?php echo $pageType; ?>"/>
+        <input type="hidden" name="userId" value="<?php echo $_REQUEST['userId']; ?>"/>
+        <button type="button" class="btn btn-primary" id="submitJson">เสร็จสิ้น</button>
+      </form>
+    </div><!-- /.container -->
     <p>
       keydown
       <small id="inputKeydownJsonData"></small>
