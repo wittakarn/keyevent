@@ -19,7 +19,7 @@
 
   <body>
     <div class="container">
-      <h2>จำนวนเส้นบังตา <?php echo $pageType*25; ?></h2>
+      <h2>จำนวนเส้นบังตา <?php echo ($pageType - 1) * 25; ?></h2>
       <div>
         <img style="float: left; padding-right: 5px" id="captcha_image" src="lib/securimage/securimage_show_basic.php?<?php echo md5(uniqid(time())) ?>&pageType=<?php echo $pageType ?>" alt="CAPTCHA Image">
         <br/>
@@ -35,6 +35,7 @@
         <input type="hidden" name="inputKeydownJsonData" id="hiddenKeydownJsonData"/>
         <input type="hidden" name="inputKeyupJsonData" id="hiddenKeyupJsonData"/>
         <input type="hidden" name="deleteJsonData" id="hiddenDeleteJsonData"/>
+        <input type="hidden" name="enterCode" id="enter-code"/>
         <input type="hidden" name="pageType" value="<?php echo $pageType; ?>"/>
         <input type="hidden" name="userId" value="<?php echo $_REQUEST['userId']; ?>"/>
         <button type="button" class="btn btn-primary" id="submitJson">เสร็จสิ้น</button>

@@ -43,6 +43,7 @@ $(function() {
 		$("#hiddenKeydownJsonData").val(JSON.stringify(arrayKeydownInputChar));
 		$("#hiddenKeyupJsonData").val(JSON.stringify(arrayKeyupInputChar));
 		$("#hiddenDeleteJsonData").val(JSON.stringify(arrayDeleteChar));
+		$("#enter-code").val(panel.html());
 		var form = $("#typingForm");
 		form.submit();
 	});

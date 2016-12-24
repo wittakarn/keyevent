@@ -1,10 +1,12 @@
 <?php
 ini_set('display_errors', 1); 
 error_reporting(E_ALL);
+session_start();
 require_once 'connection.php';
 require_once 'class/class.Keyup.php';
 require_once 'class/class.Keydown.php';
 require_once 'class/class.Keydelete.php';
+require_once 'class/class.CaptchaResult.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	
@@ -28,6 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 			$deleteJsonData = json_decode($_REQUEST['deleteJsonData'], true);
 			$keydelete = new Keydelete($conn, $deleteJsonData);
 			$keydelete->create($userId, $pageType);
+
+			$param["id"] = $userId;
+			$param["pageType"] = $pageType;
+			$param["word"] = $_SESSION['securimage_code_disp']["default"];
+			$param["correctness"] = $_REQUEST['enterCode'] == $param["word"];
+			$captchaResult = new CaptchaResult($conn, $param);
+			$captchaResult->create();
 		}
   
 		$conn->commit();
@@ -35,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$conn = null;
 
 		$pageType++;
-		if( $pageType < 9){
+		if( $pageType < 10){
 			header("Location: typing.php?&pageType=".$pageType."&userId=".$userId);
 			die();
 		}else{

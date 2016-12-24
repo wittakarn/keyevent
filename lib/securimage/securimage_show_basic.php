@@ -96,7 +96,7 @@ $img->image_height = 150;
 $img->code_length = 10;
 
 // change the number of lines drawn on the image
-$img->num_lines = 25 * $_REQUEST['pageType'];
+$img->num_lines = 25 * ($_REQUEST['pageType'] - 1);
 
 // The level of distortion.
 $img->perturbation = 0; 
