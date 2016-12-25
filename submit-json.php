@@ -34,7 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 			$param["id"] = $userId;
 			$param["pageType"] = $pageType;
 			$param["word"] = $_SESSION['securimage_code_disp']["default"];
-			$param["correctness"] = $_REQUEST['enterCode'] == $param["word"];
+			$param["enter_word"] = $_REQUEST['enterCode'];
+			$param["correctness"] = $param["enter_word"] == $param["word"];
 			$captchaResult = new CaptchaResult($conn, $param);
 			$captchaResult->create();
 		}
