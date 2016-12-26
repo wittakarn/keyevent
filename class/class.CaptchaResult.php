@@ -19,7 +19,7 @@ class CaptchaResult
 		$stmt->bindParam(":page_type", $params['pageType'], PDO::PARAM_INT);
 		$stmt->bindParam(":correctness", $params['correctness'], PDO::PARAM_STR);
 		$stmt->bindParam(":word", $params['word'], PDO::PARAM_STR);
-		$stmt->bindParam(":enter_word", $params['word'], PDO::PARAM_STR);
+		$stmt->bindParam(":enter_word", $params['enter_word'], PDO::PARAM_STR);
 
 		$stmt->execute();
 

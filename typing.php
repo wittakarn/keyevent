@@ -21,7 +21,7 @@
     <div class="container">
       <h2>จำนวนเส้นบังตา <?php echo ($pageType - 1) * 25; ?></h2>
       <div>
-        <img style="float: left; padding-right: 5px" id="captcha_image" src="lib/securimage/securimage_show_basic.php?<?php echo md5(uniqid(time())) ?>&pageType=<?php echo $pageType ?>" alt="CAPTCHA Image">
+        <img style="float: left; padding-right: 5px" id="captcha_image" src="lib/securimage/securimage_show_word.php?<?php echo md5(uniqid(time())) ?>&pageType=<?php echo $pageType ?>" alt="CAPTCHA Image">
         <br/>
         <div style="clear: both"></div>
       </div>

@@ -1916,7 +1916,7 @@ class Securimage
             }
 
             case self::SI_CAPTCHA_WORDS:
-                $words = $this->readCodeFromFile(2);
+                $words = $this->readCodeFromFile(5);
                 $this->code = implode(' ', $words);
                 $this->code_display = $this->code;
                 break;

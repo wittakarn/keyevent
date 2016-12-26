@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 /**
  * Project:     Securimage: A PHP class for creating and managing form CAPTCHA images<br />
  * File:        securimage_show.php<br />
@@ -78,29 +78,25 @@ if (!empty($_GET['namespace'])) $img->setNamespace($_GET['namespace']);
 $img->image_bg_color = new Securimage_Color('#FFFFFF');
 
 // setting the text color to a black
-$img->text_color = new Securimage_Color('#FFFF00');
+$img->text_color = new Securimage_Color('#000000');
 
 // setting the line color to ping to match the text
-$img->line_color = new Securimage_Color('#FF007F');
+$img->line_color = new Securimage_Color('#000000');
 
 // setting width and calculating optimal height
-$img->image_width = 700;
+$img->image_width = 1000;
 
 // setting height and calculating optimal width
-$img->image_height = 150;
-
-// generate a code that is 4-6 characters long
-//$img->code_length = rand(4, 6);
-$img->code_length = 10;
+$img->image_height = 100;
 
 // change the number of lines drawn on the image
-$img->num_lines = rand(3, 10);
+$img->num_lines = 25 * ($_REQUEST['pageType'] - 1);
 
 //The level of distortion.
-$img->perturbation = 0.8;
+$img->perturbation = 0;
 
 // The level of noise (random dots) to place on the image, 0-10
-$img->noise_level = 10;
+$img->noise_level = 0;
 
 $img->show();  // outputs the image and content headers to the browser
 // alternate use:
